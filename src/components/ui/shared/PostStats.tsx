@@ -2,8 +2,8 @@ import { useUserContext } from "@/context/AuthContext";
 import { useDeleteSavedPost, useGetCurrentUser, useLikPost, useSavePost } from "@/lib/react-query/queriesAndMutations";
 import { checkIsLiked } from "@/lib/utils";
 import { Models } from "appwrite"
-import { Loader } from "lucide-react";
 import React, { useState ,useEffect} from "react";
+import Loader from "./Loader";
 
 
 

@@ -27,7 +27,7 @@ import AllUsers from './_root/pages/AllUsers';
                <Route path='/all-users' element={<AllUsers/>}/>
                <Route path='/create-post' element={<CreatePost/>}/>
                <Route path='/update-post/:id' element={<EditPost/>}/>
-               <Route path='/posts/:*' element={<PostDetails/>}/>
+               <Route path='/posts/:id' element={<PostDetails/>}/>
                <Route path='/profile/:id/*' element={<Profile/>}/>
                <Route path='/update-profile/:id' element={<UpdateProfile/>}/>
             </Route>
