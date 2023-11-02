@@ -168,3 +168,66 @@ export async function createPost(post: INewPost) {
       console.log(error);
     }
   }
+
+  export async function getRecentPosts() {
+    try {
+      const posts = await database.listDocuments(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollection,
+        [Query.orderDesc("$createdAt"), Query.limit(20)]
+      );
+  
+      if (!posts) throw Error;
+  
+      return posts;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  export async function likePost(postId:string , likesArray:string[]) {
+    try {
+      const updatedPost=await database.updateDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.postCollection,
+        postId,
+        {
+          likes:likesArray
+        }
+      )
+      if(!updatedPost) throw Error;
+      return updatedPost;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  export async function savePost(postId:string , userId:string) {
+    try {
+      const savedPost=await database.createDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.savesCollection,
+        ID.unique(),
+        {
+          user :userId,
+          post:postId,
+        }
+      )
+      if(!savedPost) throw Error;
+      return savedPost;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  export async function deleteSavedPost(savedRecordId:string) {
+    try {
+      const statusCode=await database.deleteDocument(
+        appwriteConfig.databaseId,
+        appwriteConfig.savesCollection,
+        savedRecordId,
+      )
+      if(!statusCode) throw Error;
+      return {status:'ok'};
+    } catch (error) {
+      console.log(error);
+    }
+  }
