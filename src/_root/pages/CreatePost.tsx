@@ -1,4 +1,5 @@
 import PostForm from "@/components/ui/forms/PostForm"
+import RightSidebar from "@/components/ui/shared/RightSidebar"
 
 const CreatePost = () => {
 
@@ -11,6 +12,7 @@ const CreatePost = () => {
         </div>
         <PostForm action="Create"/>
       </div>
+      <RightSidebar/>
     </div>
   )
 }
