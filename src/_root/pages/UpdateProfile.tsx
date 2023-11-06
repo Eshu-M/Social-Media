@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -15,7 +14,6 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ProfileValidation } from "@/lib/validation"
 import { useUserContext } from "@/context/AuthContext"
 import { Textarea } from "@/components/ui/textarea"
-import RightSidebar from "@/components/ui/shared/RightSidebar"
 import { useToast } from "@/components/ui/use-toast"
 import { useNavigate, useParams } from "react-router-dom"
 import Loader from "@/components/ui/shared/Loader"

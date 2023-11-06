@@ -6,10 +6,8 @@ import { useUserContext } from '@/context/AuthContext';
 import { useGetPosts } from '@/lib/react-query/queriesAndMutations';
 import { Link } from 'react-router-dom';
 
-type ProfileProps={
-  action:'UpdateProfile';
-}
-const Profile = ({action}:ProfileProps) => {
+
+const Profile = () => {
   const {user}=useUserContext();
   const {data: posts, fetchNextPage , hasNextPage }=useGetPosts();
   if (!posts)
@@ -32,20 +30,14 @@ const Profile = ({action}:ProfileProps) => {
               @{user.username}
             </p>
           </div>
-          {action==='UpdateProfile' ?
-             <Link to={'/update-profile/:id'} className='hover:cursor-pointer'>
-                <Button className="flex gap-2 bg-dark-4">
-                  <img src="/assets/icons/edit.svg" alt="edit" width={20} height={20} className="text-orange-300"/>
-                  <p>Edit Profile</p>
-                  </Button>
-             </Link> :
-             <Link to={'/update-profile/:id'} className='hover:cursor-pointer'>
-                <Button className="flex gap-2 bg-dark-4">
-                  <img src="/assets/icons/edit.svg" alt="edit" width={20} height={20} className="text-orange-300"/>
-                  <p>Edit Profile</p>
-                  </Button>
-             </Link> 
-          }
+          
+          <Link to={'/update-profile/:id'} className='hover:cursor-pointer'>
+             <Button className="flex gap-2 bg-dark-4">
+               <img src="/assets/icons/edit.svg" alt="edit" width={20} height={20} className="text-orange-300"/>
+               <p>Edit Profile</p>
+               </Button>
+          </Link> 
+          
       </div>
          <div>
          <div className="flex gap-5 lg:ml-24">
